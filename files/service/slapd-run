@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec slapd -h 'ldap:/// ldapi:///' -g openldap -u openldap -F /etc/ldap/slapd.d -d stats
