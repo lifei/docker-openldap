@@ -27,3 +27,4 @@ ADD files/service/saslauthd-init.sh /etc/my_init.d/00_saslauthd_init.sh
 RUN chmod a+x /usr/local/bin/*-init.sh /etc/service/slapd/run /etc/my_init.d/00_saslauthd_init.sh
 
 EXPOSE 389
+EXPOSE 636
