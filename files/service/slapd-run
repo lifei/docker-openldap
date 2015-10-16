@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-exec slapd -h 'ldap:/// ldapi:///' -g openldap -u openldap -F /etc/ldap/slapd.d -d stats
+ulimit -n 1024
+exec slapd -h 'ldap:/// ldaps:///' -g openldap -u openldap -F /etc/ldap/slapd.d -d stats
