@@ -32,6 +32,8 @@ dn: olcDatabase={1}hdb,cn=config
 changetype: modify
 replace: olcAccess
 olcAccess: {0}to attrs=userPassword,shadowLastChange,krbPrincipalKey by self write by anonymous auth by dn="$ADMIN_DN" write by * none
+olcAccess: {1}to dn.base="" by * read
+olcAccess: {2}to * by self write by dn="$ADMIN_DN" write by * read
 -
 add: olcDbIndex
 olcDbIndex: krbPrincipalName eq,pres,sub

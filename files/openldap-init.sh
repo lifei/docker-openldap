@@ -1,12 +1,27 @@
 #!/usr/bin/env bash
 
+mkdir /etc/ldap/ssl/
+openssl req -new -x509 -nodes -out /etc/ldap/ssl/slapd.cert -keyout /etc/ldap/ssl/slapd.key -days 365
+chown root:openldap /etc/ldap/ssl/slapd.key
+chmod 640 /etc/ldap/ssl/slapd.key
+
+ldapmodify  -Q -Y EXTERNAL -H ldapi:/// <<EOF
+dn: cn=config
+changetype: modify
+add: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/ldap/ssl/slapd.cert
+-
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/ldap/ssl/slapd.key
+EOF
+
 ldapadd -Q -Y EXTERNAL -H ldapi:/// <<EOF
 version: 1
 changeType: add
 dn: olcDatabase=hdb,cn=config
 objectClass: olcDatabaseConfig
 objectClass: olcHdbConfig
-olcDatabase: {2}hdb
+olcDatabase: {1}hdb
 olcDbDirectory: /var/lib/ldap
 olcSuffix: $DOMAIN_DN
 olcAccess: {0}to attrs=userPassword,shadowLastChange by self write by anonymous auth by dn="$ADMIN_DN" write by * none
