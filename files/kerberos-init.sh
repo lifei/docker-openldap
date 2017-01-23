@@ -39,4 +39,4 @@ add: olcDbIndex
 olcDbIndex: krbPrincipalName eq,pres,sub
 EOF
 
-rm -r /tmp/kerberos
+rm -rf /tmp/kerberos
