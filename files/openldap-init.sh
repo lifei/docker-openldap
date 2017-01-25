@@ -31,10 +31,6 @@ olcLastMod: TRUE
 olcRootDN: $ADMIN_DN
 olcRootPW: $ADMIN_PW
 olcDbCheckpoint: 512 30
-olcDbConfig: {0}set_cachesize 0 2097152 0
-olcDbConfig: {1}set_lk_max_objects 1500
-olcDbConfig: {2}set_lk_max_locks 1500
-olcDbConfig: {3}set_lk_max_lockers 1500
 olcDbIndex: objectClass eq
 olcLimits: dn.exact="$ADMIN_DN" size=unlimited
 EOF

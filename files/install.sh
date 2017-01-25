@@ -34,5 +34,5 @@ chmod a+x /usr/local/bin/*-init.sh /etc/service/slapd/run /etc/my_init.d/00_sasl
 
 adduser openldap sasl
 
-rm -f "/etc/ldap/slapd.d/cn=config/olcDatabase={1}hdb.ldif" /var/lib/ldap/*
+rm -f "/etc/ldap/slapd.d/cn=config/olcDatabase={1}mdb.ldif" /var/lib/ldap/*
 rm -rf ${TMP_PATH}
