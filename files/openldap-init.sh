@@ -18,10 +18,10 @@ EOF
 ldapadd -Q -Y EXTERNAL -H ldapi:/// <<EOF
 version: 1
 changeType: add
-dn: olcDatabase=hdb,cn=config
+dn: olcDatabase=mdb,cn=config
 objectClass: olcDatabaseConfig
-objectClass: olcHdbConfig
-olcDatabase: {1}hdb
+objectClass: olcMdbConfig
+olcDatabase: {1}mdb
 olcDbDirectory: /var/lib/ldap
 olcSuffix: $DOMAIN_DN
 olcAccess: {0}to attrs=userPassword,shadowLastChange by self write by anonymous auth by dn="$ADMIN_DN" write by * none

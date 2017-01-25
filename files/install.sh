@@ -19,13 +19,16 @@ TMP_PATH=/tmp/openldap
 cp ${TMP_PATH}/kerberos.schema /etc/ldap/schema/kerberos.schema
 cp ${TMP_PATH}/sssvlv_load.ldif /etc/ldap/sssvlv/sssvlv_load.ldif
 cp ${TMP_PATH}/sssvlv_config.ldif /etc/ldap/sssvlv/sssvlv_config.ldif
-cp ${TMP_PATH}/saslauthd /etc/default/saslauthd
 cp ${TMP_PATH}/slapd.conf /etc/ldap/sasl2/slapd.conf
+
 cp ${TMP_PATH}/openldap-init.sh /usr/local/bin/openldap-init.sh
 cp ${TMP_PATH}/kerberos-init.sh /usr/local/bin/kerberos-init.sh
 cp ${TMP_PATH}/krb5-init.sh /usr/local/bin/krb5-init.sh
-cp ${TMP_PATH}/service/slapd-run /etc/service/slapd/run
+
+cp ${TMP_PATH}/saslauthd /etc/default/saslauthd
 cp ${TMP_PATH}/service/saslauthd-init.sh /etc/my_init.d/00_saslauthd_init.sh
+
+cp ${TMP_PATH}/service/slapd-run /etc/service/slapd/run
 
 chmod a+x /usr/local/bin/*-init.sh /etc/service/slapd/run /etc/my_init.d/00_saslauthd_init.sh
 
