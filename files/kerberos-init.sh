@@ -28,7 +28,7 @@ head -n -8 > kerberos.ldif
 
 ldapadd -Q -Y EXTERNAL -H ldapi:/// -f kerberos.ldif
 ldapmodify  -Q -Y EXTERNAL -H ldapi:/// <<EOF
-dn: olcDatabase={1}hdb,cn=config
+dn: olcDatabase={1}mdb,cn=config
 changetype: modify
 replace: olcAccess
 olcAccess: {0}to attrs=userPassword,shadowLastChange,krbPrincipalKey by self write by anonymous auth by dn="$ADMIN_DN" write by * none
