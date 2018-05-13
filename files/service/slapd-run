@@ -1,3 +1,16 @@
 #!/usr/bin/env bash
+set -ex
+umask 022
 ulimit -n 1024
+if [ ! -d /etc/ldap ]; then
+    cp -r /etc/ldap.original /etc/ldap
+    chown openldap:openldap -R /etc/ldap
+fi
+if [ ! -d /etc/ldap/slapd.d ]; then
+    cp -r /etc/ldap.original/* /etc/ldap/
+    chown openldap:openldap -R /etc/ldap
+fi
+
+chown openldap:openldap /var/lib/ldap
+# exec slapd -h 'ldap:/// ldapi:/// ldaps:///' -g openldap -u openldap -F /etc/ldap/slapd.d -d stats
 exec slapd -h 'ldap:/// ldapi:/// ldaps:///' -g openldap -u openldap -F /etc/ldap/slapd.d -d stats

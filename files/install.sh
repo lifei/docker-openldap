@@ -32,7 +32,9 @@ cp ${TMP_PATH}/service/slapd-run /etc/service/slapd/run
 
 chmod a+x /usr/local/bin/*-init.sh /etc/service/slapd/run /etc/my_init.d/00_saslauthd_init.sh
 
+mv /etc/ldap/ /etc/ldap.original
+
 adduser openldap sasl
 
-rm -f "/etc/ldap/slapd.d/cn=config/olcDatabase={1}mdb.ldif" /var/lib/ldap/*
-rm -rf ${TMP_PATH}
+apt-get clean 
+rm -rf "/etc/ldap/slapd.d/cn=config/olcDatabase={1}mdb.ldif" /var/lib/ldap/* /tmp/*
